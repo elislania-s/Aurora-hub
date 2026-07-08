@@ -16,7 +16,7 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
 </head>
 
@@ -33,7 +33,7 @@
 
         </div>
 
-        <nav class="menu">
+        <nav class="menu" id="menu">
 
             <a href="#inicio" class="active">Início</a>
             <a href="#projetos">Projetos</a>
@@ -48,7 +48,16 @@
             Solicitar Orçamento
         </a>
 
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
     </header>
+
+    <!-- overlay usado pra fechar o menu clicando fora -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- ================= HERO ================= -->
 

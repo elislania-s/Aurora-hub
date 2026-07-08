@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     links.forEach(link => {
         link.addEventListener("click", () => {
             ativarLink(link);
+            fecharMenu(); // fecha o menu mobile ao clicar em um link
         });
     });
 
@@ -43,32 +44,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections.forEach(section => observer.observe(section));
 
+    // 3) Menu hambúrguer (mobile/tablet)
+    const menu = document.getElementById("menu");
+    const menuToggle = document.getElementById("menuToggle");
+    const menuOverlay = document.getElementById("menuOverlay");
+
+    function abrirMenu(){
+        menu.classList.add("open");
+        menuToggle.classList.add("active");
+        menuOverlay.classList.add("show");
+        menuToggle.setAttribute("aria-expanded", "true");
+        document.body.classList.add("menu-aberto"); // trava o scroll do body
+    }
+
+    function fecharMenu(){
+        menu.classList.remove("open");
+        menuToggle.classList.remove("active");
+        menuOverlay.classList.remove("show");
+        menuToggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("menu-aberto");
+    }
+
+    menuToggle.addEventListener("click", () => {
+        if(menu.classList.contains("open")){
+            fecharMenu();
+        }else{
+            abrirMenu();
+        }
+    });
+
+    menuOverlay.addEventListener("click", fecharMenu);
+
+    // Se a tela for redimensionada pra desktop com o menu aberto, fecha ele
+    window.addEventListener("resize", () => {
+        if(window.innerWidth > 992){
+            fecharMenu();
+        }
+    });
+
 });
 
 const whatsapp = document.querySelector(".whatsapp-fixed");
 const contato = document.querySelector("#contato");
 
-const observerWhatsapp = new IntersectionObserver((entries) => {
+if(whatsapp && contato){
 
-    entries.forEach(entry => {
+    const observerWhatsapp = new IntersectionObserver((entries) => {
 
-        if(entry.isIntersecting){
+        entries.forEach(entry => {
 
-            whatsapp.classList.add("show");
+            if(entry.isIntersecting){
 
-        }else{
+                whatsapp.classList.add("show");
 
-            whatsapp.classList.remove("show");
+            }else{
 
-        }
+                whatsapp.classList.remove("show");
 
+            }
+
+        });
+
+    },{
+        threshold:0.25
     });
 
-},{
-    threshold:0.25
-});
+    observerWhatsapp.observe(contato);
 
-observerWhatsapp.observe(contato);
+}
 
 const form = document.getElementById("formContato");
 
