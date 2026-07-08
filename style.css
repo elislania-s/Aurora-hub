@@ -1,0 +1,1554 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden; /* previne qualquer scroll horizontal indesejado */
+}
+
+a{
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* ===========================
+            HEADER
+=========================== */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:72px;
+
+    background:#FFF;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 70px;
+
+    border-top:1px solid #F8D0CF;
+    border-bottom:2px solid #F3B7B5;
+
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+}
+
+.logo h1{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:28px;
+    font-weight:700;
+    color:#304E8A;
+}
+
+.logo span{
+    margin-top:2px;
+
+    font-family:"Poppins",sans-serif;
+    font-size:10px;
+    font-weight:400;
+    color:#7D8CAA;
+}
+
+.menu{
+    display:flex;
+    gap:34px;
+}
+
+.menu a{
+    position:relative;
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:500;
+    color:#304E8A;
+
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:#F3B7B5;
+}
+
+.menu a.active{
+    color:#F3B7B5;
+    font-weight:600;
+}
+
+.btn-header{
+
+    width:170px;
+    height:42px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:14px;
+
+    background:#F3B7B5;
+
+    font-family:"Poppins",sans-serif;
+    font-size:15px;
+    font-weight:600;
+
+    color:#304E8A;
+
+    transition:.3s;
+
+}
+
+.btn-header:hover{
+
+    background:#F1B2B0;
+
+    box-shadow:0 0 8px rgba(243,183,181,.3);
+
+}
+
+/* ===========================
+            HERO
+=========================== */
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        130deg,
+        #304E8A 0%,
+        #3D63AF 45%,
+        #5679C9 100%
+    );
+
+    padding:185px 70px 100px; /* padding lateral aqui, remove a dependência do width fixo do container */
+
+}
+
+.hero-glow{
+
+    position:absolute;
+
+    top:-240px;
+    right:-220px;
+
+    width:650px;
+    height:650px;
+
+    border-radius:50%;
+
+    background:#F3B7B5;
+
+    opacity:.30;
+
+    filter:blur(170px);
+
+    pointer-events:none;
+
+}
+
+.hero-container{
+
+    position:relative;
+
+    max-width:1280px; /* antes era width fixo -> estourava em telas menores */
+    width:100%;
+
+    margin:auto;
+
+}
+
+/* ===========================
+        TEXTO
+=========================== */
+
+.hero-content{
+
+    max-width:760px; /* antes era width fixo */
+    width:100%;
+
+}
+
+.hero-title{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:72px;
+
+    font-weight:700;
+
+    color:#FFF;
+
+    line-height:1.06;
+
+    /* removida a largura fixa duplicada, quem controla a largura é .hero-content */
+
+}
+
+.hero-title .linha-1{
+
+    display:block;
+
+    color:#FFF; /* precisa ser explícito, senão herda estilos de outras regras */
+
+    white-space:nowrap; /* garante que "Transformamos ideias em" fique sempre em 1 linha */
+
+}
+
+.hero-title .destaque{
+
+    display:block;
+
+    color:#F3B7B5;
+
+}
+
+.hero-description{
+
+    margin-top:26px;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:18px;
+
+    font-weight:400;
+
+    line-height:1.65;
+
+    color:#FFF;
+
+}
+
+.btn-hero{
+
+    position:relative;
+    overflow:hidden; /* necessário pra conter o brilho dentro do botão */
+
+    margin-top:36px;
+
+    width:185px;
+    height:50px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:14px;
+
+    background:#F3B7B5;
+
+    border:1px solid transparent; /* evita "pulo" de layout no hover */
+
+    color:#304E8A;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:15px;
+
+    font-weight:600; /* faltava o semibold */
+
+    transition:.3s;
+
+}
+
+.btn-hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-75%;
+
+    width:50%;
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,.75) 50%,
+        transparent 100%
+    );
+
+    transform:skewX(-25deg);
+
+    transition:left .6s ease;
+
+}
+
+.btn-hero:hover::before{
+
+    left:125%; /* o brilho desliza da esquerda pra direita no hover */
+
+}
+
+.btn-hero:hover{
+
+    border:1px solid #FFF;
+
+    background:transparent;
+
+    color:#FFF;
+
+    box-shadow:0 0 24px rgba(243,183,181,.8); /* glow rosa iluminando */
+
+}
+
+
+
+/* ===========================
+        PROJETOS
+=========================== */
+
+.projetos{
+
+    background:#030F2D;
+
+    padding:120px 70px;
+
+}
+
+.projetos-container{
+
+    max-width:1280px;
+
+    margin:auto;
+
+}
+
+.projetos-label{
+
+    display:block;
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:600;
+
+    color:#F3B7B5;
+
+    margin-bottom:60px;
+
+}
+
+.projetos-title{
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:48px;
+    font-weight:700;
+
+    color:#FFF;
+
+    text-align:center;
+
+    line-height:1.3;
+
+}
+
+.projetos-subtitle{
+
+    margin-top:16px;
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:400;
+
+    color:#F3B7B5;
+
+    text-align:center;
+
+}
+
+/* -------- Item de projeto -------- */
+
+.projeto-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:60px;
+
+    margin-top:150px;
+
+}
+
+.projeto-item.invertido{
+
+    flex-direction:row-reverse;
+
+}
+
+.projeto-image{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    animation:flutuarLeve 5s ease-in-out infinite;
+
+}
+
+.projeto-item:nth-child(3) .projeto-image{
+    animation-delay:.6s;
+}
+
+.projeto-item:nth-child(4) .projeto-image{
+    animation-delay:1.2s;
+}
+
+.projeto-image img{
+
+    width:100%;
+
+    max-width:520px;
+
+    height:340px;
+
+    object-fit:contain; /* garante que todos os notebooks fiquem visualmente do mesmo tamanho, mesmo que as imagens originais tenham proporções diferentes */
+
+}
+
+.projeto-image img.maior{
+
+    max-width:620px; /* ajusta esse valor pra controlar o tamanho só da Samara e Essência */
+
+    height:700px;
+
+}
+
+.projeto-info{
+
+    flex:1;
+
+    max-width:480px;
+
+}
+
+.projeto-categoria{
+
+    display:block;
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:600;
+
+    text-transform:uppercase;
+    letter-spacing:.5px;
+
+    color:#F3B7B5;
+
+    margin-bottom:8px;
+
+}
+
+.projeto-nome{
+
+    font-family:"Poppins",sans-serif;
+    font-size:40px;
+    font-weight:700;
+
+    color:#304E8A;
+
+    margin-bottom:16px;
+
+}
+
+.projeto-descricao{
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:400;
+    font-style:italic;
+
+    line-height:1.7;
+
+    color:#FFF;
+
+    margin-bottom:26px;
+
+}
+
+.btn-projeto{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:12px 30px;
+
+    border-radius:16px;
+
+    border:2px solid rgba(255,255,255,.5);
+
+    background:rgba(255,255,255,.04);
+
+    box-shadow:0 0 10px rgba(255,255,255,.12); /* glow bem sutil por padrão */
+
+    color:#FFF;
+
+    font-family:"Poppins",sans-serif;
+    font-size:15px;
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.btn-projeto:hover{
+
+    background:rgba(255,255,255,.28); /* branco com transparência no hover */
+
+    border-color:#FFF;
+
+    box-shadow:0 0 18px rgba(255,255,255,.35);
+
+}
+
+/* -------- Animação flutuação leve dos notebooks -------- */
+
+@keyframes flutuarLeve{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+.projeto-item.ajuste-essencia{
+    margin-top:-200px;
+}
+
+.projeto-item.invertido.ajuste-samara{
+    margin-top:-10px;
+}
+
+/* ===========================
+        SERVIÇOS
+=========================== */
+
+.servicos{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#F5F6FA;
+
+    padding:120px 70px;
+
+}
+
+.servicos-glow{
+
+    position:absolute;
+
+    bottom:-160px;
+    right:-160px;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:#F3B7B5;
+
+    opacity:.28;
+
+    filter:blur(150px);
+
+    pointer-events:none;
+
+}
+
+.servicos-container{
+
+    position:relative;
+
+    max-width:1280px;
+
+    margin:auto;
+
+}
+
+.servicos-label{
+
+    display:block;
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:600;
+
+    color:#304E8A;
+
+    margin-bottom:60px;
+
+}
+
+.servicos-title{
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:48px;
+    font-weight:700;
+
+    color:#304E8A;
+
+    text-align:center;
+
+    line-height:1.3;
+
+}
+
+.servicos-subtitle{
+
+    margin-top:16px;
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:400;
+
+    color:#6B7280;
+
+    text-align:center;
+
+}
+
+/* -------- Grid -------- */
+
+.servicos-grid{
+
+    margin-top:110px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    row-gap:100px;
+    column-gap:60px;
+
+}
+
+.servico-item{
+
+    text-align:center;
+
+}
+
+.servico-icon{
+
+    display:block;
+
+    width:296px;
+    height:274px;
+
+    object-fit:contain;
+
+    margin:0 auto -50px;
+
+    transition:transform .3s ease;
+
+}
+
+.servico-item:hover .servico-icon{
+
+    transform:translateZ(0) scale(1.05);
+
+}
+
+.servico-item h3{
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:28px;
+    font-weight:700;
+
+    color:#F3B7B5;
+
+    margin-bottom:12px;
+
+}
+
+.servico-item p{
+
+    font-family:"Poppins",sans-serif;
+    font-size:18px;
+    font-weight:500;
+
+    line-height:1.6;
+
+    color:#F3B7B5;
+
+    max-width:300px;
+
+    margin:0 auto;
+
+}
+
+/* ===========================
+        SOBRE NÓS
+=========================== */
+
+.sobre{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#030F2D;
+
+    padding:120px 70px;
+
+}
+
+/* Círculo rosa desfocado atrás do "AURORA HUB", mesma técnica do hero-glow */
+
+.sobre-glow{
+
+    position:absolute;
+
+    top:-120px;
+    right:-120px;
+
+    width:600px;
+    height:600px;
+
+    border-radius:50%;
+
+    background:#F3B7B5;
+
+    opacity:.15;
+
+    filter:blur(170px);
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+/* Texto gigante "AURORA HUB" no fundo, decorativo */
+
+.sobre-bg-text{
+
+    position:absolute;
+
+    top:120px;
+    right:70px;
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:110px;
+    font-weight:700;
+
+    color:rgba(255,255,255,.08);
+
+    line-height:1.05;
+
+    text-align:left;
+
+    white-space:nowrap;
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+.sobre-container{
+
+    position:relative;
+
+    z-index:1; /* fica acima do glow e do texto de fundo */
+
+    max-width:1280px;
+
+    margin:auto;
+
+}
+
+.sobre-label{
+
+    display:block;
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:600;
+
+    color:#F3B7B5;
+
+    margin-bottom:40px;
+
+}
+
+.sobre-title{
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:48px;
+    font-weight:700;
+
+    color:#FFF;
+
+    max-width:600px;
+
+    line-height:1.3;
+
+    margin-bottom:24px;
+
+}
+
+.sobre-descricao{
+
+    font-family:"Poppins",sans-serif;
+    font-size:18px;
+    font-weight:400;
+
+    color:#FFF;
+
+    max-width:560px;
+
+    line-height:1.7;
+
+    margin-bottom:16px; /* espaço entre um parágrafo e outro */
+
+}
+
+.sobre-descricao:last-of-type{
+
+    margin-bottom:0;
+
+}
+
+/* -------- Cards Missão / Visão / Valores -------- */
+
+.sobre-cards{
+
+    margin-top:100px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3, 1fr);
+
+    gap:30px;
+
+}
+
+.sobre-card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:16px;
+
+    padding:40px 30px;
+
+    text-align:center;
+
+}
+
+.sobre-card-icon{
+
+    width:180px;
+    height:167px;
+
+    object-fit:contain;
+
+    margin:0 auto 20px;
+
+}
+
+.sobre-card-icon.ajuste-alvo{
+    transform:translateX(-8px); /* ajusta esse número: negativo puxa pra esquerda, positivo pra direita */
+}
+
+.sobre-card h3{
+
+    font-family:"Poppins",sans-serif;
+    font-size:24px;
+    font-weight:600;
+
+    color:rgba(255,255,255,.8);
+
+    margin-bottom:12px;
+
+}
+
+.sobre-card p{
+
+    font-family:"Poppins",sans-serif;
+    font-size:16px;
+    font-weight:400;
+
+    color:rgba(255,255,255,.8);
+
+    line-height:1.6;
+
+}
+
+/* -------- Frase final -------- */
+
+.sobre-frase{
+
+    margin-top:100px;
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:36px;
+    font-weight:500;
+
+    color:#9FE3EB;
+
+    text-align:center;
+
+    line-height:1.4;
+
+}
+
+.sobre-frase .linha-frase{
+
+    display:block;
+
+    white-space:nowrap; /* impede que a linha quebre em outro ponto, tipo isolando "marca" sozinha */
+
+}
+
+/* ===================================================
+                    PROCESSO
+=================================================== */
+
+.processo{
+
+    background:#F7F8FC;
+
+    padding:120px 70px;
+
+}
+
+.processo-container{
+
+    max-width:1280px;
+
+    margin:auto;
+
+}
+
+.processo-label{
+
+    display:block;
+
+    margin-bottom:60px;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#304E8A;
+
+}
+
+.processo-title{
+
+    text-align:center;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    color:#304E8A;
+
+    line-height:1.35;
+
+}
+
+.processo-subtitle{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:16px;
+
+    font-weight:400;
+
+    color:#6B7280;
+
+}
+
+.timeline{
+
+    margin-top:120px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:center;
+
+}
+
+.etapa{
+
+    width:190px;
+
+    text-align:center;
+
+}
+
+.circulo{
+
+    width:120px;
+    height:120px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#304E8A;
+
+    border:1px solid #000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:70px;
+
+    font-weight:700;
+
+    color:#FFF;
+
+    transition:.3s ease;
+
+}
+
+.etapa:hover .circulo{
+
+    background:#F3B7B5;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(243,183,181,.35);
+
+}
+
+.linha{
+
+    width:70px;
+
+    height:2px;
+
+    background:#9FE3EB;
+
+    margin-top:60px;
+
+}
+
+.etapa h3{
+
+    margin-top:20px;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:24px;
+
+    font-weight:500;
+
+    color:#304E8A;
+
+}
+
+.etapa p{
+
+    margin-top:10px;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:16px;
+
+    font-weight:400;
+
+    color:#6B7280;
+
+    line-height:1.55;
+
+}
+
+.processo-frase{
+
+    margin-top:130px;
+
+    text-align:center;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:32px;
+
+    font-weight:500;
+
+    color:#304E8A;
+
+    line-height:1.4;
+
+}
+
+/* ===================================================
+                    CONTATO
+=================================================== */
+
+.contato{
+
+   background:#304E8A;
+
+    padding:120px 70px 80px;
+        position: relative;
+
+
+}
+
+
+.contato-container{
+
+    max-width:1280px;
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.contato-label{
+
+    display:block;
+
+    font-family:Poppins;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#FFF;
+
+    margin-bottom:55px;
+
+}
+
+.contato-title{
+
+    text-align:center;
+
+    font-family:"Space Grotesk";
+
+    font-size:56px;
+
+    font-weight:700;
+
+    color:#FFF;
+
+    line-height:1.3;
+
+}
+
+.contato-subtitle{
+
+    text-align:center;
+
+    margin-top:18px;
+
+    font-family:Poppins;
+
+    font-size:18px;
+
+    font-weight:400;
+
+    color:#FFF;
+
+}
+
+.contato-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-top:110px;
+
+    gap:100px;
+
+}
+
+/* ESQUERDA */
+
+.contato-info{
+
+    width:420px;
+
+}
+
+.contato-info h3{
+
+    font-family:"Space Grotesk";
+
+    font-size:48px;
+
+    font-weight:500;
+
+    color:#F3B7B5;
+
+}
+
+.contato-info p{
+
+    margin-top:18px;
+
+    font-family:Poppins;
+
+    font-size:18px;
+
+    font-weight:400;
+
+    color:#FFF;
+
+    line-height:1.7;
+
+}
+
+.contato-redes{
+
+    display:flex;
+    align-items:center;
+
+    gap:8px;          /* diminui a distância entre os ícones */
+
+    margin-top:18px;  /* distância da descrição */
+
+    margin-left: -45px;
+
+}
+
+.contato-redes a{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:-50px;
+
+
+}
+
+.contato-redes img{
+
+     display:block;
+    transition:.3s;
+
+}
+
+.contato-redes img:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.contato-redes img:nth-child(1){
+
+    width:111px;
+
+}
+
+.contato-redes img:nth-child(2){
+
+    width:124px;
+
+}
+
+.contato-redes img:nth-child(3){
+
+    width:120px;
+
+}
+
+/* FORM */
+
+/* FORM */
+
+.contato-formulario{
+
+    width:500px;
+
+}
+
+.form-title{
+
+    color:#FFF;
+
+    font-family:Poppins;
+
+    font-size:18px;
+
+    font-weight:500;
+
+    margin-bottom:15px;
+
+}
+
+.contato-formulario label{
+
+    display:block;
+
+    margin:15px 0 8px;
+
+    font-family:Poppins;
+
+    font-size:18px;
+
+    font-weight:500;
+
+    color:#FFF;
+
+}
+
+.contato-formulario input,
+.contato-formulario select{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:24px;
+
+    padding:0 24px;
+
+    font-family:Poppins;
+
+    font-size:18px;
+
+    font-weight:400;
+
+    color:#304E8A; /* texto digitado e "Selecione" */
+
+    background:#FFF;
+
+    margin-bottom:12px;
+
+}
+
+.contato-formulario input::placeholder{
+
+    color:rgba(48,78,138,.30);
+
+}
+
+.contato-formulario textarea{
+
+    width:100%;
+
+    height:210px;
+
+    border:none;
+
+    border-radius:24px;
+
+    padding:22px;
+
+    resize:none;
+
+    outline:none;
+
+    font-family:Poppins;
+
+    font-size:18px;
+
+    font-weight:400;
+
+    color:#304E8A; /* texto digitado */
+
+    background:#FFF;
+
+}
+
+.contato-formulario textarea::placeholder{
+
+    color:rgba(48,78,138,.30);
+
+}
+
+.contato-formulario input:focus,
+.contato-formulario select:focus,
+.contato-formulario textarea:focus{
+
+    box-shadow:0 0 0 2px rgba(243,183,181,.7);
+
+}
+
+.contato-formulario button{
+
+    margin-top:20px;
+
+    width:120px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#FFF;
+
+    font-family:Poppins;
+
+    font-size:18px;
+
+    font-weight:400;
+
+    color:#304E8A;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.contato-formulario button:hover{
+
+    background:#F3B7B5;
+
+}
+
+/* ===================================================
+                BOTAO WHATSAPP
+=================================================== */
+
+.whatsapp-float{
+
+    position:absolute;
+
+    right:30px;
+    bottom:25px;
+
+    z-index:10;
+
+}
+
+.whatsapp-float a{
+
+    display:block;
+    line-height:0;
+
+}
+
+.whatsapp-float img{
+
+    width:60px;
+    height:60px;
+    display:block;
+
+    transition:.3s;
+
+}
+
+.whatsapp-float img:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ===================================================
+                    FOOTER
+=================================================== */
+
+footer{
+ height:72px;
+
+    background:#FFF;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-top:2px solid #F3B7B5;
+    border-bottom:1px solid #F8D0CF;
+
+
+}
+
+footer h2{
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#304E8A;
+
+    line-height:1;
+
+
+}
+
+footer p{
+
+      margin-top:2px;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:14px;
+
+    font-weight:400;
+
+    color:#7D8CAA;
+
+}
