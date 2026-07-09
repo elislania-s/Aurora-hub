@@ -1123,14 +1123,19 @@ footer p{
     .projeto-item,
     .projeto-item.invertido{
         flex-direction:column;
-        gap:40px;
-        margin-top:100px;
+        gap:24px;
+        margin-top:70px;
         text-align:center;
     }
 
     .projeto-item.ajuste-essencia,
     .projeto-item.invertido.ajuste-samara{
-        margin-top:100px; /* remove os ajustes negativos pensados só pro layout lado a lado */
+        margin-top:70px; /* remove os ajustes negativos pensados só pro layout lado a lado */
+    }
+
+    .projeto-item.ajuste-essencia .projeto-info,
+    .projeto-item.invertido.ajuste-samara .projeto-info{
+        margin-top:-55px;
     }
 
     .projeto-info{
@@ -1141,12 +1146,11 @@ footer p{
     .projeto-image img.maior{
         max-width:460px;
         width:100%;
-        height:auto;
-        aspect-ratio:520/340;
+        height:auto; /* usa a proporção natural da própria foto, sem forçar uma caixa fixa */
     }
 
-    .projeto-image img.maior{
-        aspect-ratio:620/700;
+    .projeto-item.ajuste-essencia .projeto-image img{
+        transform:translateX(15px); /* empurra o notebook da Essência um pouco pra direita. Ajuste esse valor se precisar de mais ou menos */
     }
 
     /* SERVIÇOS */
@@ -1158,9 +1162,9 @@ footer p{
 
     /* SOBRE */
 
+    .sobre-glow,
     .sobre-bg-text{
-        font-size:70px;
-        top:60px;
+        display:none; /* o blur e o texto "AURORA HUB" de fundo ficam ruins em telas menores */
     }
 
     .sobre-cards{
@@ -1199,8 +1203,13 @@ footer p{
         width:100%;
     }
 
+    .contato-info{
+        text-align:center;
+    }
+
     .contato-redes{
         margin-left:0;
+        justify-content:center;
     }
 
     .contato-redes a{
@@ -1269,6 +1278,16 @@ footer p{
         font-size:30px;
     }
 
+    .projeto-item.ajuste-essencia,
+    .projeto-item.invertido.ajuste-samara{
+        margin-top:24px;
+    }
+
+    .projeto-item.ajuste-essencia .projeto-info,
+    .projeto-item.invertido.ajuste-samara .projeto-info{
+        margin-top:-55px;
+    }
+
     /* SERVIÇOS */
 
     .servicos-grid{
@@ -1296,11 +1315,6 @@ footer p{
         grid-template-columns:1fr;
         margin-top:60px;
         gap:24px;
-    }
-
-    .sobre-bg-text{
-        font-size:52px;
-        opacity:.6;
     }
 
     /* PROCESSO */
@@ -1412,8 +1426,18 @@ footer p{
     }
 
     .projeto-item{
-        margin-top:70px;
-        gap:28px;
+        margin-top:50px;
+        gap:16px;
+    }
+
+    .projeto-item.ajuste-essencia,
+    .projeto-item.invertido.ajuste-samara{
+        margin-top:16px; /* mesma distância do gap interno (imagem -> categoria/nome) */
+    }
+
+    .projeto-item.ajuste-essencia .projeto-info,
+    .projeto-item.invertido.ajuste-samara .projeto-info{
+        margin-top:-55px; /* puxa o combo/título/texto/botão pra mais perto do notebook. Ajuste esse valor se precisar */
     }
 
     .projeto-nome{
