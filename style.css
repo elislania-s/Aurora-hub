@@ -424,19 +424,6 @@ img{
     padding:120px 70px;
 }
 
-.servicos-glow{
-    position:absolute;
-    bottom:-160px;
-    right:-160px;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:#F3B7B5;
-    opacity:.28;
-    filter:blur(150px);
-    pointer-events:none;
-}
-
 .servicos-container{
     position:relative;
     max-width:1280px;
