@@ -115,12 +115,13 @@ if(whatsapp && contato){
 
 const form = document.getElementById("formContato");
 
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", async function(e){
 
     e.preventDefault();
 
     const nome = document.getElementById("nome");
     const email = document.getElementById("email");
+    const botaoEnviar = form.querySelector("button[type='submit']");
 
     let valido = true;
 
@@ -150,11 +151,50 @@ form.addEventListener("submit", function(e){
 
     }
 
-    if(valido){
+    if(!valido){
+        return;
+    }
 
-        alert("Mensagem enviada com sucesso!");
+    // Trava o botão pra evitar clique duplo enquanto envia
+    const textoOriginalBotao = botaoEnviar.textContent;
+    botaoEnviar.disabled = true;
+    botaoEnviar.textContent = "Enviando...";
 
-        form.reset();
+    try{
+
+        const dados = new FormData(form);
+
+        const resposta = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json"
+            },
+            body: dados
+        });
+
+        const resultado = await resposta.json();
+
+        if(resultado.success){
+
+            alert("Mensagem enviada com sucesso! Em breve entraremos em contato.");
+            form.reset();
+
+        }else{
+
+            alert("Não foi possível enviar sua mensagem agora. Tente novamente em instantes ou fale com a gente pelo WhatsApp.");
+            console.error("Erro no envio:", resultado);
+
+        }
+
+    }catch(erro){
+
+        alert("Não foi possível enviar sua mensagem agora. Verifique sua conexão e tente novamente.");
+        console.error("Erro de rede ao enviar formulário:", erro);
+
+    }finally{
+
+        botaoEnviar.disabled = false;
+        botaoEnviar.textContent = textoOriginalBotao;
 
     }
 

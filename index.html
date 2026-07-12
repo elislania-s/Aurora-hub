@@ -431,11 +431,11 @@
                         <img src="wpp.png" alt="">
                     </a>
 
-                    <a href="#">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aurorahubempresarial@gmail.com" target="_blank">
                         <img src="email.png" alt="">
                     </a>
 
-                    <a href="#">
+                    <a href="https://www.instagram.com/aurora.huub/" target="_blank">
                         <img src="insta.png" alt="">
                     </a>
 
@@ -451,13 +451,16 @@
 
                 <form id="formContato">
 
-                    <input type="text" placeholder="Nome" id="nome" required >
+                    <input type="hidden" name="access_key" value="88687ecf-9774-4a3f-a5e1-9e66b43d025f">
+                    <input type="hidden" name="subject" value="Novo contato pelo site - Aurora Hub">
 
-                    <input type="email" placeholder="Email" id="email" required>
+                    <input type="text" placeholder="Nome" id="nome" name="name" required >
+
+                    <input type="email" placeholder="Email" id="email" name="email" required>
 
                     <label>Tipo de Projeto:</label>
 
-                    <select id="projeto" required>
+                    <select id="projeto" name="tipo_projeto" required>
 
                         <option value="" selected disabled>Selecione</option>
 
@@ -471,7 +474,7 @@
 
                     </select>
 
-                    <textarea id="mensagem" placeholder="Conte um pouco sobre como imagina o seu projeto dos sonhos :)"></textarea>
+                    <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre como imagina o seu projeto dos sonhos :)"></textarea>
 
                     <button type="submit">
 
